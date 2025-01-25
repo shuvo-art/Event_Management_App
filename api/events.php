@@ -22,3 +22,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } else {
     Utils::jsonResponse(['status' => 'error', 'message' => 'Invalid request'], 400);
 }
+?>
