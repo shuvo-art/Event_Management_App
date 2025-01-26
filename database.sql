@@ -24,11 +24,17 @@ CREATE TABLE events (
 
 CREATE TABLE registrations (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    event_id INT,
-    user_id INT,
+    event_id INT NOT NULL,
+    user_id INT NOT NULL,
     status ENUM('pending', 'confirmed', 'cancelled') DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     UNIQUE KEY unique_registration (event_id, user_id)
 );
+
+
+UPDATE users
+SET role = 'admin'
+WHERE id = 1;
+

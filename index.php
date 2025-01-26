@@ -2,6 +2,10 @@
 require_once 'config/config.php';
 require_once 'includes/utils.php';
 
+if (Utils::isLoggedIn()) {
+    Utils::redirect('/views/dashboard.php');
+}
+
 $page_title = "Home";
 include 'templates/header.php';
 ?>

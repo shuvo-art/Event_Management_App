@@ -12,8 +12,12 @@ $reports = new Reports($db);
 $event_id = $_GET['event_id'] ?? null;
 
 if ($event_id) {
-    $reports->generateAttendeeList($event_id);
+    try {
+        $reports->generateAttendeeList($event_id);
+    } catch (Exception $e) {
+        Utils::redirect('/views/dashboard.php?error=' . urlencode($e->getMessage()));
+    }
 } else {
-    Utils::redirect('dashboard.php');
+    Utils::redirect('/views/dashboard.php?error=Event ID is required');
 }
 ?>

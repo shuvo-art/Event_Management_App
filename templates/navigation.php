@@ -11,14 +11,10 @@
                 </li>
                 <?php if (Utils::isLoggedIn()): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo SITE_URL; ?>/views/events-list.php">Events</a>
+                        <a class="nav-link" href="<?php echo SITE_URL; ?>/views/dashboard.php">Dashboard</a>
                     </li>
-                    <?php if (Utils::isAdmin()): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo SITE_URL; ?>/views/dashboard.php">Admin</a>
-                        </li>
-                    <?php endif; ?>
                 <?php endif; ?>
+                      
             </ul>
             <ul class="navbar-nav">
                 <?php if (Utils::isLoggedIn()): ?>

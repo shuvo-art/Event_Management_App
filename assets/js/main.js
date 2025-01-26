@@ -57,8 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p class="card-text">${event.description}</p>
                         <p class="card-text">
                             <small class="text-muted">
-                                ${new Date(event.date).toLocaleDateString()}
-                                at ${event.location}
+                                ${new Date(event.date).toLocaleDateString()} at ${event.location}
                             </small>
                         </p>
                         <button class="btn btn-primary register-btn" 
