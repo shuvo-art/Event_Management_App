@@ -38,6 +38,11 @@ include '../templates/header.php';
             <a href="event-create.php" class="btn btn-success">Create New Event</a>
         </div>
 
+        <div class="mb-3">
+            <input type="text" id="globalSearch" class="form-control" placeholder="Search events or attendees...">
+        </div>
+        <div id="searchResults"></div>
+
         <div class="row mb-3">
             <div class="col-md-6">
                 <form method="GET" id="filterForm">

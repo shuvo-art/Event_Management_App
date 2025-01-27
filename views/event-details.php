@@ -43,18 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p><strong>Capacity:</strong> <?php echo htmlspecialchars($event_details['capacity']); ?></p>
         <p><strong>Registered Attendees:</strong> <?php echo htmlspecialchars($event_details['registration_count']); ?></p>
 
-        <?php if ($success_message): ?>
-            <div class="alert alert-success"><?php echo $success_message; ?></div>
-        <?php endif; ?>
-        <?php if ($error_message): ?>
-            <div class="alert alert-danger"><?php echo $error_message; ?></div>
-        <?php endif; ?>
-
         <?php if ($event_details['registration_count'] < $event_details['capacity']): ?>
             <?php if (!$registration->isUserRegistered($event_id, $_SESSION['user_id'])): ?>
-                <form method="POST">
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </form>
+                <button type="button" class="btn btn-primary register-btn" data-event-id="<?php echo $event_id; ?>">Register</button>
             <?php else: ?>
                 <p class="text-success">You are already registered for this event.</p>
             <?php endif; ?>
@@ -63,5 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
     </div>
 </div>
+
 
 <?php include '../templates/footer.php'; ?>

@@ -45,7 +45,6 @@ class Registration {
         }
     }
 
-    // Add the new function here
     public function isUserRegistered($event_id, $user_id) {
         try {
             $stmt = $this->conn->prepare(
@@ -67,6 +66,23 @@ class Registration {
                  WHERE r.event_id = ?"
             );
             $stmt->execute([(int)$event_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function searchAttendees($term) {
+        try {
+            $term = "%{$term}%";
+            $stmt = $this->conn->prepare(
+                "SELECT u.name, u.email, e.title AS event_title 
+                 FROM registrations r
+                 JOIN users u ON r.user_id = u.id
+                 JOIN events e ON r.event_id = e.id
+                 WHERE u.name LIKE ? OR u.email LIKE ?"
+            );
+            $stmt->execute([$term, $term]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
             throw $e;
